@@ -1,0 +1,306 @@
+@use '@angular/material' as mat;
+
+@import "@angular/material/theming";
+
+@include mat.core();
+
+//define color palette
+$green-palette:(
+  50: #9FCF67,
+  100: #289928,
+  200: #2d7a3f,
+  300: #39bf59,
+  400: #33a64f,
+  500: #2fba3a,
+  600: #1f9128,
+  700: #21c22e,
+  800: #289927,
+  900: #32cd32,
+ contrast:(
+  50: rgba(black, .7),
+  100: rgba(black, .7),
+  200: rgba(black, .7),
+  300: rgba(black, .7),
+  400: rgba(black, .7),
+  500: rgba(black, .7),
+  600: rgba(black, .7),
+  700: rgba(black, .7),
+  800: rgba(black, .7),
+  900: rgba(black, .7),
+ )
+);
+
+$accent-palette: (
+  50: #DE6FFF,
+  100: #A85DF9,
+  200: #8A39E1,
+  300: #7B0CC0,
+  400: #8946A6,
+  500:  #7A028C,
+  600:  #4D0171,
+  700:  #9146B6,
+  800:  #6F3DBC,
+  900:  #4D0171,
+
+  contrast: (
+    50: rgba(black, .87),
+    100: rgba(black, .87),
+    200: rgba(black, .87),
+    300: rgba(black, .87),
+    400: rgba(black, .87),
+    500: rgba(black, .87),
+    600: rgba(black, .87),
+    700: rgba(black, .87),
+    800: rgba(black, .87),
+    900: rgba(black, .87)
+  )
+);
+
+$angular-primary: mat.define-palette($green-palette, 50);
+$angular-accent: mat.define-palette($accent-palette, 300);
+$angular-warn: mat.define-palette(mat.$red-palette);
+
+$angular-default-theme: mat.define-light-theme((
+  color: (
+    primary: $angular-primary,
+    accent: $angular-accent,
+    warn: $angular-warn
+  ),
+));
+
+@include mat.all-component-themes($angular-default-theme);
+
+$angular-dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $angular-primary,
+    accent: $angular-accent,
+    warn: $angular-warn
+  ),
+));
+
+.darkMode {
+  @include mat.all-component-colors($angular-dark-theme)
+}
+
+/* @include mat.core-theme($my-theme);
+@include mat.button-theme($my-theme); */
+
+/* Reset css inbuilt styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 18px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+:root {
+  --primary-color: #9FCF67;
+  --secondary-color: limegreen;
+  --nav-max-height: 100px;
+  --speed: 1.5s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 6px 0;
+}
+
+a {
+  color: steelblue;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: rgb(216, 212, 212);
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-60 { font-size: 60px; }
+.material-icons.md-78 { font-size: 78px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+}
+
+.card {
+  background-color: #fff;
+  padding: 7px 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, .4);
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+.riffle {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: scale .5s ease-out;
+}
+@keyframes scale {
+  to {
+    transform: translate(-50%, -50%) scale(3);
+  }
+}
+
+.btn {
+  padding: 6px 18px;
+  background-color: var(--primary-color);
+  border: 3px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  transition: all var(--speed) ease;
+
+  &:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: #ddd;
+  }
+
+  &:active {
+    transform: scale(.7);
+  }
+  &:disabled {
+    pointer-events: auto! important;
+    cursor: not-allowed! important;
+    background-color: rgba(255, 255, 255, .5)! important;
+    transform: none! important;
+  }
+}
+
+/*Loader and spinner */
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 100;
+  display: grid;
+  place-items: center;
+
+  .spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid transparent;
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    display: grid;
+    place-items: center;
+    animation: spinner 1s linear infinite;
+    
+    .inner-spinner {
+      width: 40px;
+      height: 40px;
+      border: 5px solid transparent;
+      border-radius: 50%;
+      border-top-color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+
+    }
+
+    @keyframes spinner {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
+.message-toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+  padding: 10px 5px;
+  border-radius: 5px;
+  background-color: #96BE3F;
+  color: #fff;
+
+  margin-bottom: .5rem;
+
+  p { 
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.alert-danger {
+  background-color: #EF4459;
+
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

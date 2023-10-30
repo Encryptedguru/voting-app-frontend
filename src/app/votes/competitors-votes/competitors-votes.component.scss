@@ -1,0 +1,52 @@
+mat-form-field {
+  width: 100%;
+}
+
+.btn-get-votes {
+  width: 100%;
+}
+
+.competitors-container {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: .5rem;
+  
+}
+
+mat-card {
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @media (max-width: 600px) {
+    & {
+      max-width:100%;
+    }
+  }
+
+  img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .bar-container {
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background-color: #ddd;
+    position: relative;
+    margin-top: 10px;
+
+   .bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      border-radius: 5px;
+      background-color: darkgray;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: var(--secondary-color) !important;
+ }
+::ng-deep .mat-form-field-label {
+  /*change color of label*/
+  color: var(--primary-color) !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: var(--primary-color) !important;
+} 
+ ::ng-deep.mat-form-field {
+  /*change color of underline*/
+   color: var(--primary-color) !important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: var(--secondary-color) !important;
+ }
+.card {
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h3 {
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+
+  max-width: 768px;
+  margin: 0 auto;
+  .mat-form-field {
+    width: 100%;
+  }
+
+  input {
+    color: var(--primary-color) !important;
+    width: 100%;
+  }
+
+  .form-group {
+    margin: 10px 0;
+    .btn-update {
+      display: block;
+      width: 100%;
+      max-width: 350px;
+      margin: 0 auto;
+
+      &:disabled {
+        border-color: lightgrey;
+        color: #ddd;
+      }
+    }
+  }
+}
+
+.material-icons {
+
+  color: var(--secondary-color);
+}

@@ -1,0 +1,9 @@
+.active {
+  background-color: #333;
+  color: #fff;
+}
+
+.router-outlet {
+  margin-top: calc(var(--nav-max-height) + 10px);
+}
+

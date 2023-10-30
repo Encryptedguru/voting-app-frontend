@@ -1,0 +1,95 @@
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: var(--secondary-color) !important;
+ }
+::ng-deep .mat-form-field-label {
+  /*change color of label*/
+  color: var(--primary-color) !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: var(--primary-color) !important;
+} 
+ ::ng-deep.mat-form-field {
+  /*change color of underline*/
+   color: var(--primary-color) !important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: var(--secondary-color) !important;
+ }
+
+ // change appearance of radio button by default
+::ng-deep .mat-radio-outer-circle {
+  border-color: #ddd;
+}
+
+::ng-deep .mat-select-value-text {
+  color: var(--primary-color) !important;
+}
+::ng-deep .mat-select-panel {
+  background-color: var(--primary-color);
+}
+::ng-deep mat-datepicker-toggle {
+  color: var(--primary-color) !important;
+}
+::ng-deep mat-select-toggle {
+  color: var(--primary-color) !important;
+}
+::ng-deep mat-datepicker-underline {
+  background-color: var(--primary-color) !important;
+}
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.card {
+  /* background-color: #333; */
+  padding: 10px;
+  padding-bottom: 1px;
+  min-height: 400px;
+  margin-top: 20px;
+
+
+
+  .card-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: .5rem;
+    label {
+      display: block;
+
+    }
+
+    mat-radio-button {
+      color: var(--primary-color);
+      margin-right: 5px;
+    }
+
+    mat-form-field {
+      display: block;
+    }
+    
+    input {
+      color: var(--primary-color) !important;
+      width: 100%;
+    }
+    input[type="radio"] {
+      width: auto;
+    }
+  } 
+
+  .btn-reg {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+
+    &:disabled {
+      border-color: lightgrey;
+      color: #ddd;
+    }
+  }
+}

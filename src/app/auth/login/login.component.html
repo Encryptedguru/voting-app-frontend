@@ -1,0 +1,28 @@
+<div class="loader" *ngIf="loading">
+  <div class="spinner" >
+    <div class="inner-spinner"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="message-toast" *ngIf="messageToast" [class.alert-danger]="!messageToast.success">{{messageToast.message}}</div>
+  <form class="card" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <h3 class="text-primary">*Login with your Id number and Date of Birth</h3>
+    <mat-form-field>
+      <mat-label>ID Number</mat-label>
+      <input type="text" name="" matInput formControlName="idNumber">
+      <mat-error *ngIf="idNumber.invalid && idNumber.touched">*Must include 7-8 Characters</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+      <mat-hint style="color: #ddd;">MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="dateOfBirth.invalid && dateOfBirth.touched">*Valid Date format MM/DD/YY</mat-error>
+    </mat-form-field>
+    <div class="form-group">
+      <button class="btn btn-primary btn-login" type="submit" [disabled]="loginForm.invalid">Sign In <i class="fa fa-circle-arrow-up"></i></button>
+    </div>
+    <p class="text-primary">Don't have an Account? <a routerLink="/register">Register Here</a></p>
+  </form>
+</div>

@@ -1,0 +1,72 @@
+<div class="loader" *ngIf="loading">
+  <div class="spinner">
+    <div class="inner-spinner"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="message-toast" *ngIf="messageToast" [class.alert-danger]="!messageToast.success" >{{messageToast.message}}</div>
+  <form  class="card" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="card-header">
+      <h3 class="text-secondary">*Provide Details Per Your ID Card!!</h3>
+    </div>
+    <div class="card-body">
+      <div class="grid-item">
+        <!--Id Number-->
+        <mat-form-field class="form-group">
+          <mat-label for="id">ID Number</mat-label>
+          <input type="text" matNativeControl formControlName="idNumber" placeholder="39464706">
+          <mat-error *ngIf="idNumber.invalid && idNumber.touched">*Must have 7-8 characters</mat-error>
+        </mat-form-field>
+        <!--DATe of birth-->
+        <mat-form-field >
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+          <mat-hint style="color: #ddd;">MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="dateOfBirth.invalid && dateOfBirth.touched">*Valid Date format MM/DD/YY</mat-error>
+        </mat-form-field>
+        <!--Gender-->
+        <mat-radio-group aria-label="Select an option" class="form-group" formControlName="gender">
+          <label class="text-primary">Gender</label>
+          <mat-radio-button value="male">Male</mat-radio-button>
+          <mat-radio-button value="female">Female</mat-radio-button>
+          <mat-error *ngIf="gender.invalid && gender.touched">Choose gender by clicking circle buttons</mat-error>
+        </mat-radio-group>
+        
+      </div>
+      <div class="grid-item" formGroupName="location">
+        <mat-form-field class="form-group">
+          <mat-label for="county">County</mat-label>
+          <mat-select formControlName="county" matNativeControl>
+            <mat-option *ngFor="let county of counties;let index = index" [value]="county.county">{{county.county}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="location.invalid && location.touched">
+            Choose County from drop-down
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-group">
+          <mat-label for="constituency">Constituency</mat-label>
+          <mat-select formControlName="constituency" id="constituency" matNativeControl [attr.disabled]="registerForm.controls['location'].value.county == ''">
+           <mat-option *ngFor="let constituency of constituencies" [value]="constituency.constituency">{{constituency.constituency}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="location.invalid && location.touched">
+            First choose County from drop-down above to choose constituency
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-group">
+          <mat-label for="ward">Ward</mat-label>
+          <mat-select matNativeControl formControlName="ward" [attr.disabled]="registerForm.controls['location'].value.constituency == ''">
+            <mat-option *ngFor="let ward of wards" [value]="ward">{{ward}}</mat-option>
+            <mat-error *ngIf="location.invalid && location.touched">
+              First choose Constituency from drop-down above to choose ward
+            </mat-error>
+          </mat-select>
+        </mat-form-field>
+    
+      </div>
+    </div>
+    <button class="btn btn-primary btn-reg" type="submit" [disabled]="registerForm.invalid">Register Voter <i class="fa fa-circle-arrow-up"></i></button>
+    <p class="text-primary">Already have an Account? <a routerLink="/login">Login Here</a></p>
+  </form>
+</div>

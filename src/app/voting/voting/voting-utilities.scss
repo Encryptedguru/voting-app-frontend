@@ -1,0 +1,26 @@
+
+.card {
+  background-color: #fff;
+  .card-body {
+    border: none;
+    
+    legend {
+      color: limegreen;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.btn-submit {
+  background-color: lime;
+  &:hover {
+    opacity: .7;
+  }
+}
+
+
+.btn {
+  display: flex;
+  align-items: center;
+}

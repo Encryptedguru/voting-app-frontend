@@ -1,0 +1,4 @@
+<div class="message-toast" [class.alert-danger]="!alert.success" *ngIf="alert">
+  <p>{{alert.message}}</p>
+  <i class="fa-regular fa-circle-xmark" (click)="removeAlert($event)"></i>
+</div>

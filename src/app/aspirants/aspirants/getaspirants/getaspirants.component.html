@@ -1,0 +1,50 @@
+<div class="container">
+  <table mat-table [dataSource]="aspirants" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- img Column -->
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef> Image </th>
+      <img [src]="aspirant.avatarUrl" alt="aspirant.name image" mat-cell *matCellDef="let aspirant">
+      <!-- <td mat-cell *matCellDef="let aspirant"> {{aspirant.avatarUrl}} </td> -->
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let aspirant"> {{aspirant.name['firstName'] }} {{ aspirant.name['lastName'] }} {{ aspirant.name['surName']}}</td>
+    </ng-container>
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> Position </th>
+      <td mat-cell *matCellDef="let aspirant"> {{aspirant.seat }}</td>
+    </ng-container>
+  
+    <!-- Party Column -->
+    <ng-container matColumnDef="party">
+      <th mat-header-cell *matHeaderCellDef> Party </th>
+      <td mat-cell *matCellDef="let aspirant"> {{aspirant.party}} </td>
+    </ng-container>
+    <!-- county Column -->
+    <ng-container matColumnDef="county">
+      <th mat-header-cell *matHeaderCellDef> County </th>
+      <td mat-cell *matCellDef="let aspirant"> {{aspirant.voter.location.county}} </td>
+    </ng-container>
+    <!--constituency-->
+    <ng-container matColumnDef="constituency">
+      <th mat-header-cell *matHeaderCellDef> Constituecy </th>
+      <td mat-cell *matCellDef="let aspirant"> {{aspirant.voter.location.constituency}} </td>
+    </ng-container>
+    <!--ward-->
+    <ng-container matColumnDef="ward">
+      <th mat-header-cell *matHeaderCellDef> Ward </th>
+      <td mat-cell *matCellDef="let aspirant"> {{aspirant.voter.location.ward}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/aspirants', row._id] " title="click to view aspirant details"></tr>
+  </table>
+</div>

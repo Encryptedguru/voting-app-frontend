@@ -1,0 +1,53 @@
+<div class="loader" *ngIf="loading">
+  <div class="spinner">
+    <div class="inner-spinner"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="message-toast" *ngIf="messageToast" [class.alert-danger]="!messageToast.success">{{messageToast.message}}</div>
+</div>
+<div class="container">
+  <table mat-table [dataSource]="voters" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- voter id column -->
+    <ng-container matColumnDef="idNumber">
+      <th mat-header-cell *matHeaderCellDef> ID Number </th>
+      <td mat-cell *matCellDef="let voter"> {{voter.idNumber}} </td>
+    </ng-container>
+  
+    <!-- County Column -->
+    <ng-container matColumnDef="county">
+      <th mat-header-cell *matHeaderCellDef> County </th>
+      <td mat-cell *matCellDef="let voter"> {{voter.location.county}} </td>
+    </ng-container>
+  
+    <!-- constituecy Column -->
+    <ng-container matColumnDef="constituency">
+      <th mat-header-cell *matHeaderCellDef> Constituency </th>
+      <td mat-cell *matCellDef="let voter"> {{voter.location.constituency }} </td>
+    </ng-container>
+  
+    <!-- Ward Column -->
+    <ng-container matColumnDef="ward">
+      <th mat-header-cell *matHeaderCellDef> Ward </th>
+      <td mat-cell *matCellDef="let voter"> {{voter.location.ward }} </td>
+    </ng-container>
+  
+    <!-- View Button -->
+    <ng-container matColumnDef="view">
+      <th mat-header-cell *matHeaderCellDef> View </th>
+      <td mat-cell *matCellDef="let voter"> <a class="btn btn-view" [routerLink]="['/voters/', voter._id]" >View</a> </td>
+    
+    </ng-container>
+    <ng-container matColumnDef="aspirant">
+      <th mat-header-cell *matHeaderCellDef>Aspirant</th>
+      <td mat-cell *matCellDef="let voter" > <a class="btn btn-view" [routerLink]="['/voters/', voter._id, 'register-aspirant']" *ngIf="voter.role == 'voter'">Be Aspirant</a></td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

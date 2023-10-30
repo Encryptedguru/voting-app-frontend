@@ -1,0 +1,44 @@
+<div class="loader" *ngIf="loading">
+  <div class="spinner">
+    <div class="inner-spinner"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="message-toast" *ngIf="messageToast" [class.alert-danger]="!messageToast.success">{{messageToast.message}}</div>
+</div>
+<div class="container">
+  <form class="card" [formGroup]="updateVoterLocationForm" (ngSubmit)="onUpdate()">
+    <div class="card-header">
+      <div class="material-icons md-78">
+        where_to_vote
+      </div>
+      <h3 class="text-primary">Update Where to Vote</h3>
+    </div>
+    <div class="location-details">  
+      <mat-form-field>
+        <mat-label>County</mat-label>
+        <mat-select matInput formControlName="county">
+          <mat-option *ngFor="let county of counties" [value]="county.county">{{county.county}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="county.invalid && county.touched">*Choose a county from the drop-down</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Constituency</mat-label>
+        <mat-select formControlName="constituency">
+          <mat-option *ngFor="let constituency of constituencies" [value]="constituency.constituency">{{constituency.constituency}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="constituency.invalid && constituency.touched">*First Choose a county to choose a Constituecy</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Ward</mat-label>
+        <mat-select formControlName="ward">
+          <mat-option *ngFor="let ward of wards" [value]="ward">{{ward}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="ward.invalid && ward.touched">*First Choose a constituency to choose a ward</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-update" type="submit" [disabled]="updateVoterLocationForm.invalid">Update Details <i class="fa fa-circle-arrow-up"></i></button>
+    </div>
+  </form>
+</div>

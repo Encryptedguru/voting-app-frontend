@@ -1,0 +1,26 @@
+<div class="loader" *ngIf="loading">
+  <div class="spinner">
+    <div class="inner-spinner"></div>
+  </div>
+</div>
+<div class="container">
+  <form (ngSubmit)="onSubmit()" [formGroup]="votingForm">
+    <mat-slider class="stepper" min="0" max="5" [value]="activeStep"></mat-slider>
+    <div class="form-container" *ngFor="let position of positions; let index = index">
+      <div class="card card-main" *ngIf="index == activeStep" >
+        <fieldset class="card-body">
+          <legend>Vote Your Favorite <strong>{{position.position | uppercase}}</strong></legend>
+            <app-aspirant *ngFor="let aspirant of position.aspirants" [aspirant]="aspirant"  [votingForm]="votingForm" >
+            </app-aspirant>
+        </fieldset>
+        <mat-label  *ngIf="index == positions.length - 1" class="mat-label">Confirm here
+          <mat-checkbox matInput type="checkbox" matInput  (change)="confirm($event)"></mat-checkbox></mat-label>
+        <div class="form-group row">
+          <button class="btn btn-primary" type="button" (click)="prev()" *ngIf="index > 0"><i class="material-icons">arrow_circle_left</i>Previous</button>
+          <button class="btn btn-primary" type="button" (click)="next()" *ngIf="index < positions.length -1" [disabled]="votingForm.controls[position.position].status === 'INVALID'">Next <i class="material-icons">arrow_circle_right</i></button>
+          <button type="submit" class="btn btn-submit" [disabled]="votingForm.invalid || !isChecked" *ngIf="index == positions.length -1"><i class="material-icons">how_to_vote</i>Vote Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,50 @@
+<div class="container">
+  <mat-list class="card" *ngIf="aspirant">
+    <div class="update-btn" [routerLink]="['/edit', aspirantId]" title="update details">
+      <i class="material-icons md-36">edit_note</i>
+    </div>
+     
+    <div class="avatar">
+       <figure>
+           <img [src]="aspirant.avatarUrl" [alt]="aspirant.name + 'image'">
+       </figure>
+      <p class="text-primary">{{ aspirant.name | uppercase}}</p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="grid-container">
+      <div class="details">
+        <li class="row">
+          <strong>Party</strong>
+          <p>{{ aspirant.party }}</p>
+        </li>
+        <mat-divider></mat-divider>
+        <li class="row">
+          <strong>Position</strong>
+          <p>{{ aspirant.seat }}</p>
+        </li>
+        <mat-divider></mat-divider>
+        <li class="row">
+          <strong>Votes</strong>
+          <p>{{ aspirant.votes }}</p>
+        </li>
+      </div>
+      <div class="location">
+        <li class="row">
+          <strong>County</strong>
+          <p>{{aspirant.location.county}}</p>
+        </li>
+        <mat-divider></mat-divider>
+        <li class="row">
+          <strong>Constituency</strong>
+          <p>{{aspirant.location.constituency}}</p>
+        </li>
+        <mat-divider></mat-divider>
+        <li class="row">
+          <strong>Ward</strong>
+          <p>{{aspirant.location.ward}}</p>
+        </li>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-list>
+</div>

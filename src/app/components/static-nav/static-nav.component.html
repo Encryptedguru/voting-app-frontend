@@ -1,0 +1,25 @@
+<nav class="static-nav ">
+  <div class="container row">
+    <figure class="logo" routerLink="/">
+     <img src="../../assets/voterNew.png" alt="IEBC logo">
+    </figure>
+    <ul class="list-group">
+     <li class="list-item"><a  class="link-item" target="_blank"><i class="fab fa-twitter"></i></a></li>
+     <li class="list-item" routerLink="/register" *ngIf="!isAuthenticated">
+      <a class="nav-item" title="Register">
+        <i class="material-icons md-24">app_registration</i>
+      </a>
+    </li>
+    <li class="list-item" routerLink="/login" *ngIf="!isAuthenticated">
+      <a class="nav-item" title="Login">
+        <i class="material-icons md-24">login</i>
+      </a>
+    </li>
+    <li class="list-item" *ngIf="isAuthenticated">
+      <a class="nav-item" title="Logout">
+        <i class="material-icons md-24">logout</i>
+      </a>
+    </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,15 @@
+<label class="card aspirant-card mat-app-background"  [formGroup]="votingForm" [class.active]="votingForm.controls[aspirant.seat].value == aspirant._id">
+  <input type="radio" [formControlName]="aspirant.seat" #input  [value]="aspirant._id" [checked]="votingForm.controls[aspirant.seat].value == aspirant._id">
+  <figure class="aspirant-img">
+    <img [src]="aspirant.avatarUrl" [alt]="aspirant.name['firstName']+ '\'s image'">
+  </figure>
+   <ul>
+    <li><strong>Name:</strong>{{aspirant.name['firstName']}} {{aspirant.name['lastName']}}</li>
+    <li><strong>Seat:</strong>{{aspirant.seat == "presidency" ? "President" :  aspirant['seatgi']}}</li>
+    <li><strong>Party:</strong>{{aspirant.party}}</li>
+   </ul>
+   <div class="voted" *ngIf="input.checked ? true: false">
+    <span class="material-icons md-48">done</span>
+   </div>
+  </label>
+

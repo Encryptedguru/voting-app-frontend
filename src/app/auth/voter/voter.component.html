@@ -1,0 +1,43 @@
+<div class="container">
+  <mat-list class="card" *ngIf="voter">
+    <div class="update-btn" [routerLink]="['/update/', voterId]" title="update details">
+      <i class="material-icons md-36">edit_note</i>
+    </div>
+    <li class="row">
+  
+      <strong>ID Number</strong>
+      <p>{{voter.idNumber}}</p>
+    </li>
+    <mat-divider></mat-divider>
+    <li class="row">
+      <strong>Date of Birth</strong>
+      <p>{{voter.dateOfBirth | date}}</p>
+    </li>
+    <mat-divider></mat-divider>
+    <li class="row">
+      <strong>Role</strong>
+      <p>{{voter.role}}</p>
+    </li>
+    <mat-divider></mat-divider>
+    <li class="row">
+      <strong>Voted</strong>
+      <p>{{voter.voted ? 'Have Voted ✔': 'You have not yet voted ❌' }}</p>
+    </li>
+    <mat-divider></mat-divider>
+    <li class="row">
+      <strong>County</strong>
+      <p>{{voter.location.county}}</p>
+    </li>
+    <mat-divider></mat-divider>
+    <li class="row">
+      <strong>Constituency</strong>
+      <p>{{voter.location.constituency}}</p>
+    </li>
+    <mat-divider></mat-divider>
+    <li class="row">
+      <strong>Ward</strong>
+      <p>{{voter.location.constituency}}</p>
+    </li>
+    <mat-divider></mat-divider>
+  </mat-list>
+</div>

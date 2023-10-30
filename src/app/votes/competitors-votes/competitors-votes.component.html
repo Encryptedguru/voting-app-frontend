@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="spinner">
+    <div class="inner-spinner"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Select the position and location to get aspirants votes</div>
+    </div>
+    <form [formGroup]="positionsForm" (submit)="onGetVotes()">
+       <mat-form-field>
+         <mat-label>Position</mat-label>
+        <mat-select formControlName="position">
+          <mat-option value="governor">Governor</mat-option>
+          <mat-option value="senator">Senator</mat-option>
+          <mat-option value="womenrep">Women Rep</mat-option>
+          <mat-option value="mp">M.P</mat-option>
+          <mat-option value="mca">M.C.A</mat-option>
+        </mat-select>
+       </mat-form-field>
+       <div formGroupName="location">
+         <mat-form-field>
+           <mat-label>County</mat-label>
+           <mat-select formControlName="county">
+             <mat-option [value]="county.county" *ngFor="let county of counties">{{ county.county }}</mat-option>
+           </mat-select>
+         </mat-form-field>
+         <mat-form-field *ngIf="position.value == 'mp' || position.value == 'mca'">
+           <mat-label>Constituency</mat-label>
+           <mat-select formControlName="constituency" [required]="position.value == 'mp' || position.value == 'mca'">
+             <mat-option  *ngFor="let constituency of constituencies" [value]="constituency.constituency">{{ constituency.constituency }}</mat-option>
+           </mat-select>
+         </mat-form-field>
+         <mat-form-field *ngIf="position.value == 'mca'">
+           <mat-label>Ward</mat-label>
+           <mat-select formControlName="ward" [required]="position.value =='mca'">
+             <mat-option value="wanjohi" *ngFor="let ward of wards" [value]="ward">{{ward}}</mat-option>
+           </mat-select>
+         </mat-form-field>
+       </div>
+       <button mat-raised-button color="primary" class="btn-get-votes"  type="submit">Get Votes</button>
+    </form>
+  </div>
+  <div class="competitors-container" *ngIf="aspirants">
+    <mat-card *ngFor="let aspirant of aspirants">
+      <mat-card-header>
+        <mat-card-title > {{ aspirant.seat }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-md-image [src]="aspirant.avatarUrl">
+      <mat-card-subtitle>{{ aspirant.name }}</mat-card-subtitle>
+      <div class="location">
+        <ul>
+          <li>
+            <strong class="text-primary">Party:</strong>
+            <span>{{ aspirant.party }}</span>
+          </li>
+          <li>
+            <strong class="text-primary">Votes:</strong>
+            <span>{{aspirant.votes}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="bar-container">
+        <div class="bar" [style.width]="(aspirant.votes / aspirantsTotalVotes) * 100 +'%'"></div>
+      </div>
+    </mat-card>
+  </div>
+   <h3 *ngIf="presidents">Presidents Ballot Result</h3>
+  <div class="competitors-container" *ngIf="presidents">
+    <mat-card *ngFor="let president of presidents">
+      <mat-card-header>
+        <mat-card-title > {{ president.seat }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-md-image [src]="president.avatarUrl">
+      <mat-card-subtitle>{{ president.name['firstName'] }} {{ president.name['lastName']}}</mat-card-subtitle>
+      <div class="location">
+        <ul>
+          <li>
+            <strong class="text-primary">Party:</strong>
+            <span>{{ president.party }}</span>
+          </li>
+          <li>
+            <strong class="text-primary">Votes:</strong>
+            <span>{{president.votes}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="bar-container">
+        <div class="bar" [style.width]="(president.votes / presidentsTotalVotes) * 100 +'%'"></div>
+      </div>
+    </mat-card>
+  </div>
+</div>

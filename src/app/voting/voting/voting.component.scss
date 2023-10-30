@@ -1,0 +1,26 @@
+.stepper {
+  width: 100%;
+ 
+}
+
+.form-container {
+  .card-main {   
+    background-color: transparent; 
+    border-radius: 0;
+    box-shadow: none;
+    .form-group {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .card-body {
+       display: grid;
+       display: -ms-grid;
+       display: -moz-grid;
+       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+       gap: .5rem;
+       margin-bottom: .5rem;
+    }
+  }
+}

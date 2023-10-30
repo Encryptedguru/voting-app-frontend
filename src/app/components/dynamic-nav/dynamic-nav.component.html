@@ -1,0 +1,50 @@
+<div class="harbuger-toggle" [class.active]="active" (click)="active = !active">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>
+<nav class="main-nav" [class.active]="active" >
+  <ul class="list-group">
+    <li class="list-item logo" routerLink="/">
+        <img src="../../assets/20.png" alt="iebc icon">
+        <span>iebc</span>
+    </li>
+    <li class="list-item"  routerLink="/">
+      <a class="nav-item">
+        <i class="material-icons md-24">house</i>
+        <span>Home</span>
+      </a>
+    </li>
+    <li class="list-item" routerLinkActive="active-route" routerLink="/voting">
+      <a class="nav-item">
+       <i class="material-icons md-24">how_to_vote</i>
+       <span>Vote</span>
+      </a>
+    </li>
+    <li class="list-item" routerLinkActive="active-route" routerLink="/voters">
+      <a class="nav-item">
+       <i class="material-icons md-24">groups</i>
+       <span>Voters</span>
+      </a>
+    </li>
+    <li class="list-item" routerLinkActive="active-route" routerLink="/aspirants" >
+      <a class="nav-item">
+        <i class="material-icons md-24">diversity_3</i>
+        <span>Aspirants</span>
+      </a>
+    </li>
+    <li class="list-item" routerLinkActive="active-route" routerLink="/votes" >
+      <a class="nav-item">
+        <i class="material-icons md-24">ballot</i>
+        <span>Get Votes</span>
+      </a>
+    </li>
+    
+    <!-- <li class="list-item" (click)="themify(checkVal)">
+      <a routerLinkActive="active-route" class="nav-item">
+        <i class="fa-solid fa-moon"></i>
+        <span>Themify</span>
+      </a>
+    </li> -->
+  </ul>
+</nav>

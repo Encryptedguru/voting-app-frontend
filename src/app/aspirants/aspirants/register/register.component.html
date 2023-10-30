@@ -1,0 +1,63 @@
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <span class="material-icons md-78">person_add</span>
+      <h3 class="text-primary">{{ mode == 'register'? 'Register as an aspirant' : 'Update your details'}}  </h3>
+    </div>
+    <div class="card-body">
+       <form (submit)="onRegister()" [formGroup]="aspirantForm">
+        <!--Name-->
+        <div class="formGroupName" formGroupName="name">
+          <div class="names">
+            <mat-form-field>
+              <mat-label>First Name</mat-label>
+              <input type="text" matNativeControl formControlName="firstName">
+              <mat-error *ngIf="name['firstName'].invalid && name['firstName'].touched">Add your first Name</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field>
+              <mat-label>Last Name</mat-label>
+              <input type="text" matNativeControl formControlName="lastName">
+              <mat-error *ngIf="name['lastName'].invalid && name['lastName'].touched">Add your Last Name</mat-error>
+            </mat-form-field>
+          </div>
+          <mat-form-field>
+            <mat-label>Sur-Name</mat-label>
+            <input type="text" matNativeControl formControlName="surName">
+            <mat-error *ngIf="name['surName'].invalid && name['surName'].touched">Add your Surname</mat-error>
+          </mat-form-field>
+        </div>
+         <!--Seat /position-->
+         <mat-form-field>
+           <mat-label>Seat</mat-label>
+           <mat-select formControlName="seat">
+             <mat-option value="presidency">Presidency</mat-option>
+             <mat-option value="governor">Governor</mat-option>
+             <mat-option value="senator">Senator</mat-option>
+             <mat-option value="womenrep">Women Representative</mat-option>
+             <mat-option value="mp">MP</mat-option>
+             <mat-option value="mca">MCA</mat-option>
+             <mat-error *ngIf="seat.invalid && seat.touched">Select aspiring seat</mat-error>
+           </mat-select>
+         </mat-form-field>
+         <!--Party-->
+         <mat-form-field>
+           <mat-label>Party</mat-label>
+           <input type="text" matNativeControl formControlName="party">
+           <mat-error *ngIf="party.invalid && party.touched">Add the political party name</mat-error>
+         </mat-form-field>
+         <div class="form-group">
+          <div class="controls">
+            <button mat-stroked-button (click)="fileInput.click()" type="button">Choose File</button>
+            <input type="file" #fileInput class="file-input" (change)="chooseImage($event)">
+          </div>
+          <figure *ngIf="avatarUrl">
+            <img [src]="avatarUrl" alt="Aspirant image">
+          </figure>
+         </div>
+         <button mat-raised-button color="primary" class="btn-register" type="submit" [disabled]="aspirantForm.invalid">{{ mode == 'register' ? 'Register Aspirant': 'Update Voter'}}</button>
+       </form>
+    </div>
+  </div>
+</div>
